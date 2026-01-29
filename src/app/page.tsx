@@ -25,8 +25,8 @@ const features = [
   },
   {
     icon: '🌏',
-    title: 'Multilingual',
-    description: 'Speaks BM, English, Mandarin, and Tamil fluently.',
+    title: '100+ Languages',
+    description: 'Speaks your customers\' language. Auto-detects and responds naturally.',
   },
   {
     icon: '📊',
@@ -35,10 +35,19 @@ const features = [
   },
 ]
 
+const useCases = [
+  { icon: '🍽️', name: 'Restaurants', desc: 'Reservations, menu inquiries, orders' },
+  { icon: '💇', name: 'Salons & Spas', desc: 'Appointment booking, services info' },
+  { icon: '🏥', name: 'Clinics', desc: 'Patient scheduling, reminders' },
+  { icon: '🏋️', name: 'Gyms & Studios', desc: 'Class bookings, membership info' },
+  { icon: '🏨', name: 'Hotels', desc: 'Reservations, concierge services' },
+  { icon: '🛍️', name: 'Retail', desc: 'Product inquiries, order tracking' },
+]
+
 const pricing = [
   {
     name: 'Starter',
-    price: '1,500',
+    price: '99',
     description: 'For small businesses getting started',
     features: [
       '1 channel (WhatsApp or Telegram)',
@@ -51,7 +60,7 @@ const pricing = [
   },
   {
     name: 'Business',
-    price: '3,000',
+    price: '199',
     description: 'Most popular for growing businesses',
     features: [
       'WhatsApp + Telegram',
@@ -66,12 +75,12 @@ const pricing = [
   },
   {
     name: 'Enterprise',
-    price: '5,000',
+    price: '499',
     description: 'For businesses that need everything',
     features: [
       'All channels',
       'Custom AI training',
-      'Malaysia-hosted server',
+      'Dedicated server',
       'Unlimited messages',
       'Dedicated manager',
       'Custom integrations',
@@ -91,20 +100,41 @@ const faqs = [
     a: 'Most businesses go live within 24-48 hours. We work with you to train the AI on your specific services.',
   },
   {
-    q: 'Does it really speak Bahasa Malaysia?',
-    a: 'Yes! Fluent BM, including slang and local expressions. Also English, Mandarin, and Tamil.',
+    q: 'What languages does it support?',
+    a: 'Over 100 languages including English, Spanish, French, German, Mandarin, Arabic, and more. It auto-detects and responds in the customer\'s language.',
   },
   {
     q: 'What if the AI makes a mistake?',
-    a: 'You can review all conversations and correct the AI. It learns from every correction.',
+    a: 'You can review all conversations and correct the AI. It learns from every correction and improves over time.',
   },
   {
     q: 'Is my customer data safe?',
-    a: 'Absolutely. All data is encrypted. Enterprise plans include Malaysia-hosted servers.',
+    a: 'Absolutely. All data is encrypted end-to-end. Enterprise plans include dedicated servers in your region.',
   },
   {
     q: 'Can I cancel anytime?',
     a: 'Yes. No lock-in contracts. Cancel with 30 days notice.',
+  },
+]
+
+const testimonials = [
+  {
+    quote: "Our response time went from hours to seconds. Customers love it.",
+    name: "Sarah Chen",
+    role: "Owner, Bloom Salon",
+    avatar: "S"
+  },
+  {
+    quote: "It handles 80% of inquiries automatically. Game changer for our small team.",
+    name: "Marcus Johnson",
+    role: "Manager, Urban Bites",
+    avatar: "M"
+  },
+  {
+    quote: "Setup took 2 hours. Now it books appointments while I sleep.",
+    name: "Dr. Priya Sharma",
+    role: "Dentist, Smile Clinic",
+    avatar: "P"
   },
 ]
 
@@ -159,7 +189,7 @@ export default function Home() {
             <div className={mounted ? 'fade-in-up' : 'opacity-0'}>
               <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-6">
                 <span className="w-2 h-2 bg-[#00d4aa] rounded-full animate-pulse" />
-                <span className="text-sm text-[#8b8b9e]">Now serving Malaysian businesses</span>
+                <span className="text-sm text-[#8b8b9e]">Trusted by 500+ businesses worldwide</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
                 Your AI Staff<br />
@@ -185,10 +215,10 @@ export default function Home() {
               </div>
               <div className="flex items-center gap-6 text-sm text-[#8b8b9e]">
                 <span className="flex items-center gap-2">
-                  <span className="text-[#00d4aa]">✓</span> Setup dalam 24 jam
+                  <span className="text-[#00d4aa]">✓</span> Live in 24 hours
                 </span>
                 <span className="flex items-center gap-2">
-                  <span className="text-[#00d4aa]">✓</span> No coding
+                  <span className="text-[#00d4aa]">✓</span> No coding needed
                 </span>
               </div>
             </div>
@@ -220,7 +250,7 @@ export default function Home() {
                         {/* Received */}
                         <div className="flex">
                           <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow">
-                            <p className="text-sm text-white">Hi, nak book untuk 2 orang esok malam boleh?</p>
+                            <p className="text-sm text-white">Hi, I'd like to book a table for 2 tomorrow evening?</p>
                             <span className="text-[10px] text-[#8b8b9e] mt-1 block">7:32 PM</span>
                           </div>
                         </div>
@@ -228,7 +258,7 @@ export default function Home() {
                         {/* Sent */}
                         <div className="flex justify-end">
                           <div className="bg-[#005c4b] rounded-lg rounded-tr-none p-3 max-w-[85%] shadow">
-                            <p className="text-sm text-white">Hi! Boleh je 😊 Esok ada slot 7pm, 7:30pm, dan 8pm. Nak yang mana?</p>
+                            <p className="text-sm text-white">Hi! 😊 We have tables available at 7pm, 7:30pm, and 8pm tomorrow. Which time works best for you?</p>
                             <span className="text-[10px] text-[#8b8b9e] mt-1 block text-right">7:32 PM ✓✓</span>
                           </div>
                         </div>
@@ -236,7 +266,7 @@ export default function Home() {
                         {/* Received */}
                         <div className="flex">
                           <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow">
-                            <p className="text-sm text-white">7:30pm</p>
+                            <p className="text-sm text-white">7:30pm please</p>
                             <span className="text-[10px] text-[#8b8b9e] mt-1 block">7:33 PM</span>
                           </div>
                         </div>
@@ -244,7 +274,7 @@ export default function Home() {
                         {/* Sent */}
                         <div className="flex justify-end">
                           <div className="bg-[#005c4b] rounded-lg rounded-tr-none p-3 max-w-[85%] shadow">
-                            <p className="text-sm text-white">Done! ✅ Booked 2 pax, 7:30pm esok. Nanti saya remind ye. See you!</p>
+                            <p className="text-sm text-white">Perfect! ✅ Booked for 2 at 7:30pm tomorrow. I'll send a reminder. See you then!</p>
                             <span className="text-[10px] text-[#8b8b9e] mt-1 block text-right">7:33 PM ✓✓</span>
                           </div>
                         </div>
@@ -262,8 +292,8 @@ export default function Home() {
       <section className="py-12 px-6 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { value: '50+', label: 'Businesses' },
-            { value: '10K+', label: 'Messages/month' },
+            { value: '500+', label: 'Businesses' },
+            { value: '1M+', label: 'Messages handled' },
             { value: '24/7', label: 'Availability' },
             { value: '<30s', label: 'Response time' },
           ].map((stat, i) => (
@@ -284,7 +314,7 @@ export default function Home() {
               Everything Your Business Needs
             </h2>
             <p className="text-[#8b8b9e] text-lg max-w-2xl mx-auto">
-              Like hiring a full-time staff member that never sleeps, never takes MC, and speaks every language your customers do.
+              Like hiring a full-time employee that never sleeps, never calls in sick, and speaks every language your customers do.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -296,6 +326,64 @@ export default function Home() {
                 <span className="text-5xl mb-6 block group-hover:scale-110 transition-transform">{feature.icon}</span>
                 <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
                 <p className="text-[#8b8b9e] leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="py-24 px-6 border-y border-white/5 bg-white/[0.02]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#00d4aa] text-sm font-semibold tracking-wider uppercase mb-4 block">Use Cases</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Built for Service Businesses
+            </h2>
+            <p className="text-[#8b8b9e] text-lg">
+              From restaurants to clinics, we've got you covered.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {useCases.map((useCase, i) => (
+              <div 
+                key={i}
+                className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 text-center hover:bg-white/[0.05] hover:border-[#00d4aa]/30 transition-all"
+              >
+                <span className="text-4xl mb-3 block">{useCase.icon}</span>
+                <h3 className="font-semibold mb-1">{useCase.name}</h3>
+                <p className="text-xs text-[#8b8b9e]">{useCase.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-[#00d4aa] text-sm font-semibold tracking-wider uppercase mb-4 block">Testimonials</span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Loved by Business Owners
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <div 
+                key={i}
+                className="bg-white/[0.03] border border-white/5 rounded-2xl p-8"
+              >
+                <p className="text-lg mb-6 leading-relaxed">"{t.quote}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#00d4aa] to-[#00a8cc] flex items-center justify-center text-black font-bold">
+                    {t.avatar}
+                  </div>
+                  <div>
+                    <div className="font-semibold">{t.name}</div>
+                    <div className="text-sm text-[#8b8b9e]">{t.role}</div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -335,7 +423,7 @@ export default function Home() {
                 <h3 className="font-bold text-xl mb-1">{plan.name}</h3>
                 <p className="text-[#8b8b9e] text-sm mb-6">{plan.description}</p>
                 <div className="mb-6">
-                  <span className="text-sm text-[#8b8b9e]">RM</span>
+                  <span className="text-sm text-[#8b8b9e]">$</span>
                   <span className="text-5xl font-bold ml-1">{plan.price}</span>
                   <span className="text-[#8b8b9e]">/month</span>
                 </div>
@@ -410,7 +498,7 @@ export default function Home() {
                 Ready to Never Miss<br />a Customer Again?
               </h2>
               <p className="text-xl text-[#8b8b9e] mb-8 max-w-xl mx-auto">
-                Join 50+ Malaysian businesses already using StrykrAgent.
+                Join 500+ businesses already using StrykrAgent to serve customers 24/7.
               </p>
               <a
                 href="#pricing"
@@ -439,7 +527,7 @@ export default function Home() {
             <a href="#" className="hover:text-white transition">Contact</a>
           </div>
           <div className="text-sm text-[#8b8b9e]">
-            © 2026 StrykrAgent · Made with ❤️ in Malaysia 🇲🇾
+            © 2026 StrykrAgent. All rights reserved.
           </div>
         </div>
       </footer>
