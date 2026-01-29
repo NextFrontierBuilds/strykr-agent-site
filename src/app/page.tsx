@@ -1,66 +1,64 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const features = [
   {
     icon: '💬',
     title: 'WhatsApp & Telegram',
-    description: 'Answer customer inquiries 24/7 on the channels they already use.',
+    description: 'Reply instantly, 24/7. Never lose a customer to slow responses again.',
   },
   {
     icon: '📅',
-    title: 'Book Appointments',
-    description: 'Auto-schedule, send reminders, and manage your calendar.',
+    title: 'Smart Booking',
+    description: 'Handles appointments, sends reminders, reschedules automatically.',
   },
   {
     icon: '🛒',
-    title: 'Take Orders',
-    description: 'Accept orders, confirm details, and process payments.',
-  },
-  {
-    icon: '🔔',
-    title: 'Follow Up',
-    description: 'Send thank you messages, request reviews, chase invoices.',
+    title: 'Order Management',
+    description: 'Takes orders, confirms details, processes payments seamlessly.',
   },
   {
     icon: '🧠',
     title: 'Learns Your Business',
-    description: 'Gets smarter over time. Knows your menu, services, and policies.',
+    description: 'Knows your menu, services, pricing. Gets smarter every day.',
   },
   {
     icon: '🌏',
-    title: 'BM, English & Chinese',
-    description: 'Speaks to your customers in their preferred language.',
+    title: 'Multilingual',
+    description: 'Speaks BM, English, Mandarin, and Tamil fluently.',
+  },
+  {
+    icon: '📊',
+    title: 'Analytics Dashboard',
+    description: 'See every conversation, track performance, spot opportunities.',
   },
 ]
 
 const pricing = [
   {
     name: 'Starter',
-    price: 'RM 1,500',
-    period: '/month',
-    description: 'Perfect for small businesses',
+    price: '1,500',
+    description: 'For small businesses getting started',
     features: [
-      '1 channel (WhatsApp OR Telegram)',
+      '1 channel (WhatsApp or Telegram)',
       'Basic auto-replies',
       'Business hours support',
-      'Email support',
+      '500 messages/month',
     ],
-    cta: 'Get Started',
+    cta: 'Start Free Trial',
     popular: false,
   },
   {
     name: 'Business',
-    price: 'RM 3,000',
-    period: '/month',
+    price: '3,000',
     description: 'Most popular for growing businesses',
     features: [
       'WhatsApp + Telegram',
       'Appointment booking',
       'Order taking',
       'CRM integration',
-      'Analytics dashboard',
+      '2,000 messages/month',
       'Priority support',
     ],
     cta: 'Start Free Trial',
@@ -68,16 +66,15 @@ const pricing = [
   },
   {
     name: 'Enterprise',
-    price: 'RM 5,000',
-    period: '/month',
+    price: '5,000',
     description: 'For businesses that need everything',
     features: [
       'All channels',
       'Custom AI training',
       'Malaysia-hosted server',
-      'Dedicated account manager',
+      'Unlimited messages',
+      'Dedicated manager',
       'Custom integrations',
-      'SLA guarantee',
     ],
     cta: 'Contact Sales',
     popular: false,
@@ -86,51 +83,68 @@ const pricing = [
 
 const faqs = [
   {
-    q: 'Do I need to be technical?',
-    a: 'Not at all. We handle all the setup. Just tell us about your business and we configure everything for you.',
+    q: 'Do I need any technical knowledge?',
+    a: 'Zero. We handle everything—setup, training, maintenance. You just tell us about your business.',
   },
   {
-    q: 'How long does setup take?',
-    a: 'Most businesses are live within 24-48 hours. We work with you to train the AI on your specific services and policies.',
+    q: 'How fast can I get started?',
+    a: 'Most businesses go live within 24-48 hours. We work with you to train the AI on your specific services.',
   },
   {
-    q: 'Can it speak Bahasa Malaysia?',
-    a: 'Yes! Our AI speaks fluent BM, English, and Chinese (Mandarin). It auto-detects the customer\'s language.',
+    q: 'Does it really speak Bahasa Malaysia?',
+    a: 'Yes! Fluent BM, including slang and local expressions. Also English, Mandarin, and Tamil.',
   },
   {
-    q: 'What if the AI gets something wrong?',
-    a: 'You can review all conversations and correct the AI. It learns from corrections and gets better over time.',
+    q: 'What if the AI makes a mistake?',
+    a: 'You can review all conversations and correct the AI. It learns from every correction.',
   },
   {
-    q: 'Is my data secure?',
-    a: 'Yes. Your data is encrypted and stored securely. Enterprise plans include Malaysia-hosted servers for full data sovereignty.',
+    q: 'Is my customer data safe?',
+    a: 'Absolutely. All data is encrypted. Enterprise plans include Malaysia-hosted servers.',
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. No long-term contracts. Cancel anytime with 30 days notice.',
+    a: 'Yes. No lock-in contracts. Cancel with 30 days notice.',
   },
 ]
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen animated-gradient relative overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div className="fixed inset-0 grid-pattern pointer-events-none" />
+      
+      {/* Noise texture */}
+      <div className="fixed inset-0 noise pointer-events-none" />
+
+      {/* Floating orbs */}
+      <div className="fixed top-20 left-10 w-72 h-72 bg-[#00d4aa]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="fixed bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">⚡</span>
-            <span className="font-bold text-xl">StrykrAgent</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#00d4aa] to-[#00a8cc] flex items-center justify-center">
+              <span className="text-xl">⚡</span>
+            </div>
+            <span className="font-bold text-xl tracking-tight">StrykrAgent</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900">Features</a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900">Pricing</a>
-            <a href="#faq" className="text-gray-600 hover:text-gray-900">FAQ</a>
+            <a href="#features" className="text-[#8b8b9e] hover:text-white transition">Features</a>
+            <a href="#pricing" className="text-[#8b8b9e] hover:text-white transition">Pricing</a>
+            <a href="#faq" className="text-[#8b8b9e] hover:text-white transition">FAQ</a>
           </div>
           <a
             href="#pricing"
-            className="bg-primary text-white px-5 py-2 rounded-lg font-medium hover:bg-primary/90 transition"
+            className="bg-[#00d4aa] text-black px-5 py-2.5 rounded-lg font-semibold hover:bg-[#00e4ba] transition shadow-lg shadow-[#00d4aa]/25"
           >
             Get Started
           </a>
@@ -138,74 +152,105 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Your AI Employee,<br />
-            <span className="gradient-text">Always On Duty</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            An AI assistant that answers WhatsApp, books appointments, and handles customers 24/7. 
-            While you focus on running your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <a
-              href="#pricing"
-              className="bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition shadow-lg shadow-primary/25"
-            >
-              Start Free Trial
-            </a>
-            <a
-              href="#features"
-              className="bg-gray-100 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-200 transition"
-            >
-              See How It Works
-            </a>
-          </div>
-          <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-            <span className="flex items-center gap-2">
-              <span className="text-green-500">✓</span> Live in 24 hours
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-green-500">✓</span> No coding needed
-            </span>
-            <span className="flex items-center gap-2">
-              <span className="text-green-500">✓</span> Cancel anytime
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Phone Mockup */}
-      <section className="pb-20 px-6">
-        <div className="max-w-md mx-auto">
-          <div className="bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
-            <div className="bg-gray-100 rounded-[2.5rem] overflow-hidden">
-              <div className="bg-green-600 px-4 py-3 flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <span>⚡</span>
-                </div>
-                <div className="text-white">
-                  <div className="font-semibold">StrykrAgent</div>
-                  <div className="text-xs text-green-200">Online</div>
-                </div>
+      <section className="pt-40 pb-20 px-6 relative">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <div className={mounted ? 'fade-in-up' : 'opacity-0'}>
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-6">
+                <span className="w-2 h-2 bg-[#00d4aa] rounded-full animate-pulse" />
+                <span className="text-sm text-[#8b8b9e]">Now serving Malaysian businesses</span>
               </div>
-              <div className="p-4 space-y-3 bg-[#e5ddd5] min-h-[300px]">
-                <div className="bg-white rounded-lg p-3 max-w-[80%] shadow-sm">
-                  <p className="text-sm">Hi, I want to book for 2 people tomorrow night</p>
-                  <span className="text-xs text-gray-400">7:32 PM</span>
-                </div>
-                <div className="bg-[#dcf8c6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
-                  <p className="text-sm">Hi! I'd be happy to help you book. We have tables available at 7pm, 7:30pm, and 8pm tomorrow. Which time works best for you? 😊</p>
-                  <span className="text-xs text-gray-400">7:32 PM ✓✓</span>
-                </div>
-                <div className="bg-white rounded-lg p-3 max-w-[80%] shadow-sm">
-                  <p className="text-sm">7:30pm please</p>
-                  <span className="text-xs text-gray-400">7:33 PM</span>
-                </div>
-                <div className="bg-[#dcf8c6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
-                  <p className="text-sm">Perfect! ✅ Booked for 2 at 7:30pm tomorrow. I'll send you a reminder. See you then!</p>
-                  <span className="text-xs text-gray-400">7:33 PM ✓✓</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
+                Your AI Staff<br />
+                <span className="gradient-text">Never Sleeps</span>
+              </h1>
+              <p className="text-xl text-[#8b8b9e] mb-8 leading-relaxed max-w-lg">
+                An AI employee that handles WhatsApp, books appointments, and serves customers 24/7—so you can focus on what matters.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="#pricing"
+                  className="group bg-[#00d4aa] text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#00e4ba] transition shadow-xl shadow-[#00d4aa]/30 flex items-center justify-center gap-2"
+                >
+                  Start Free Trial
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </a>
+                <a
+                  href="#features"
+                  className="bg-white/5 border border-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 transition flex items-center justify-center"
+                >
+                  See Demo
+                </a>
+              </div>
+              <div className="flex items-center gap-6 text-sm text-[#8b8b9e]">
+                <span className="flex items-center gap-2">
+                  <span className="text-[#00d4aa]">✓</span> Setup dalam 24 jam
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className="text-[#00d4aa]">✓</span> No coding
+                </span>
+              </div>
+            </div>
+
+            {/* Right: Phone Mockup */}
+            <div className={`${mounted ? 'fade-in-up stagger-2' : 'opacity-0'} relative`}>
+              <div className="float">
+                {/* Phone frame */}
+                <div className="relative mx-auto w-[300px] md:w-[340px]">
+                  {/* Glow behind phone */}
+                  <div className="absolute inset-0 bg-[#00d4aa]/20 blur-[60px] rounded-full" />
+                  
+                  {/* Phone body */}
+                  <div className="relative bg-[#1a1a2e] rounded-[3rem] p-2 shadow-2xl border border-white/10">
+                    <div className="bg-[#111b21] rounded-[2.5rem] overflow-hidden">
+                      {/* WhatsApp header */}
+                      <div className="bg-[#202c33] px-4 py-3 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00d4aa] to-[#00a8cc] flex items-center justify-center text-black font-bold">
+                          S
+                        </div>
+                        <div>
+                          <div className="font-semibold text-white text-sm">StrykrAgent</div>
+                          <div className="text-xs text-[#00d4aa]">● Online</div>
+                        </div>
+                      </div>
+                      
+                      {/* Chat messages */}
+                      <div className="p-4 space-y-3 min-h-[320px] bg-[#0b141a]" style={{backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L30 60M0 30L60 30' stroke='%23ffffff' stroke-opacity='0.02' fill='none'/%3E%3C/svg%3E\")"}}>
+                        {/* Received */}
+                        <div className="flex">
+                          <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow">
+                            <p className="text-sm text-white">Hi, nak book untuk 2 orang esok malam boleh?</p>
+                            <span className="text-[10px] text-[#8b8b9e] mt-1 block">7:32 PM</span>
+                          </div>
+                        </div>
+
+                        {/* Sent */}
+                        <div className="flex justify-end">
+                          <div className="bg-[#005c4b] rounded-lg rounded-tr-none p-3 max-w-[85%] shadow">
+                            <p className="text-sm text-white">Hi! Boleh je 😊 Esok ada slot 7pm, 7:30pm, dan 8pm. Nak yang mana?</p>
+                            <span className="text-[10px] text-[#8b8b9e] mt-1 block text-right">7:32 PM ✓✓</span>
+                          </div>
+                        </div>
+
+                        {/* Received */}
+                        <div className="flex">
+                          <div className="bg-[#202c33] rounded-lg rounded-tl-none p-3 max-w-[85%] shadow">
+                            <p className="text-sm text-white">7:30pm</p>
+                            <span className="text-[10px] text-[#8b8b9e] mt-1 block">7:33 PM</span>
+                          </div>
+                        </div>
+
+                        {/* Sent */}
+                        <div className="flex justify-end">
+                          <div className="bg-[#005c4b] rounded-lg rounded-tr-none p-3 max-w-[85%] shadow">
+                            <p className="text-sm text-white">Done! ✅ Booked 2 pax, 7:30pm esok. Nanti saya remind ye. See you!</p>
+                            <span className="text-[10px] text-[#8b8b9e] mt-1 block text-right">7:33 PM ✓✓</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -213,93 +258,100 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats bar */}
+      <section className="py-12 px-6 border-y border-white/5 bg-white/[0.02]">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+          {[
+            { value: '50+', label: 'Businesses' },
+            { value: '10K+', label: 'Messages/month' },
+            { value: '24/7', label: 'Availability' },
+            { value: '<30s', label: 'Response time' },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.value}</div>
+              <div className="text-sm text-[#8b8b9e]">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Features */}
-      <section id="features" className="py-20 px-6 bg-gray-50">
+      <section id="features" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            What Your AI Can Do
-          </h2>
-          <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-            Like having a full-time staff member that never sleeps, never takes leave, and speaks every language your customers do.
-          </p>
+          <div className="text-center mb-16">
+            <span className="text-[#00d4aa] text-sm font-semibold tracking-wider uppercase mb-4 block">Features</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Everything Your Business Needs
+            </h2>
+            <p className="text-[#8b8b9e] text-lg max-w-2xl mx-auto">
+              Like hiring a full-time staff member that never sleeps, never takes MC, and speaks every language your customers do.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition">
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
-                <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+              <div 
+                key={i} 
+                className="group bg-white/[0.03] border border-white/5 rounded-2xl p-8 hover:bg-white/[0.05] hover:border-[#00d4aa]/30 transition-all duration-300"
+              >
+                <span className="text-5xl mb-6 block group-hover:scale-110 transition-transform">{feature.icon}</span>
+                <h3 className="font-semibold text-xl mb-3">{feature.title}</h3>
+                <p className="text-[#8b8b9e] leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
-            Trusted by Malaysian Businesses
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6">
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <div className="text-gray-600">Businesses using StrykrAgent</div>
-            </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-primary mb-2">10,000+</div>
-              <div className="text-gray-600">Customer messages handled monthly</div>
-            </div>
-            <div className="p-6">
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-gray-600">Always available, never misses a message</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing */}
-      <section id="pricing" className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-gray-600 text-center mb-12">
-            Choose the plan that fits your business. Upgrade or downgrade anytime.
-          </p>
+      <section id="pricing" className="py-24 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00d4aa]/5 to-transparent pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative">
+          <div className="text-center mb-16">
+            <span className="text-[#00d4aa] text-sm font-semibold tracking-wider uppercase mb-4 block">Pricing</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Simple, Honest Pricing
+            </h2>
+            <p className="text-[#8b8b9e] text-lg">
+              No hidden fees. Cancel anytime.
+            </p>
+          </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {pricing.map((plan, i) => (
               <div
                 key={i}
-                className={`bg-white rounded-2xl p-8 ${
+                className={`relative bg-[#12121a] rounded-3xl p-8 border ${
                   plan.popular
-                    ? 'ring-2 ring-primary shadow-xl scale-105'
-                    : 'shadow-sm'
+                    ? 'border-[#00d4aa]/50 shadow-xl shadow-[#00d4aa]/10'
+                    : 'border-white/5'
                 }`}
               >
                 {plan.popular && (
-                  <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-                    Most Popular
-                  </span>
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-[#00d4aa] to-[#00a8cc] text-black text-xs font-bold px-4 py-1.5 rounded-full">
+                      MOST POPULAR
+                    </span>
+                  </div>
                 )}
-                <h3 className="font-bold text-xl mt-4">{plan.name}</h3>
-                <p className="text-gray-500 text-sm mb-4">{plan.description}</p>
+                <h3 className="font-bold text-xl mb-1">{plan.name}</h3>
+                <p className="text-[#8b8b9e] text-sm mb-6">{plan.description}</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-gray-500">{plan.period}</span>
+                  <span className="text-sm text-[#8b8b9e]">RM</span>
+                  <span className="text-5xl font-bold ml-1">{plan.price}</span>
+                  <span className="text-[#8b8b9e]">/month</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm">
-                      <span className="text-green-500">✓</span>
-                      {feature}
+                    <li key={j} className="flex items-start gap-3 text-sm">
+                      <span className="text-[#00d4aa] mt-0.5">✓</span>
+                      <span className="text-[#8b8b9e]">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 <button
-                  className={`w-full py-3 rounded-xl font-semibold transition ${
+                  className={`w-full py-4 rounded-xl font-semibold transition ${
                     plan.popular
-                      ? 'bg-primary text-white hover:bg-primary/90'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-[#00d4aa] text-black hover:bg-[#00e4ba] shadow-lg shadow-[#00d4aa]/25'
+                      : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
                   }`}
                 >
                   {plan.cta}
@@ -307,35 +359,41 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-center text-gray-500 text-sm mt-8">
-            All plans include setup assistance and 14-day free trial. No credit card required.
+          <p className="text-center text-[#8b8b9e] text-sm mt-8">
+            14-day free trial on all plans. No credit card required.
           </p>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-20 px-6">
+      <section id="faq" className="py-24 px-6">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Questions? We Have Answers.
-          </h2>
+          <div className="text-center mb-16">
+            <span className="text-[#00d4aa] text-sm font-semibold tracking-wider uppercase mb-4 block">FAQ</span>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Got Questions?
+            </h2>
+          </div>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
-              <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
+              <div 
+                key={i} 
+                className="bg-white/[0.03] border border-white/5 rounded-2xl overflow-hidden hover:border-white/10 transition"
+              >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full px-6 py-4 text-left font-medium flex items-center justify-between hover:bg-gray-50 transition"
+                  className="w-full px-6 py-5 text-left font-medium flex items-center justify-between hover:bg-white/[0.02] transition"
                 >
-                  {faq.q}
-                  <span className={`transition-transform ${openFaq === i ? 'rotate-180' : ''}`}>
-                    ▼
+                  <span>{faq.q}</span>
+                  <span className={`text-[#00d4aa] transition-transform duration-300 ${openFaq === i ? 'rotate-45' : ''}`}>
+                    +
                   </span>
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-4 text-gray-600">
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-40' : 'max-h-0'}`}>
+                  <div className="px-6 pb-5 text-[#8b8b9e]">
                     {faq.a}
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
@@ -343,37 +401,45 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-primary text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Never Miss a Customer Again?
-          </h2>
-          <p className="text-xl opacity-90 mb-8">
-            Start your free trial today. No credit card required.
-          </p>
-          <a
-            href="#pricing"
-            className="inline-block bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition"
-          >
-            Get Started Free →
-          </a>
+      <section className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="relative bg-gradient-to-br from-[#00d4aa]/20 via-[#12121a] to-purple-500/20 rounded-3xl p-12 md:p-16 border border-white/10 overflow-hidden">
+            <div className="absolute inset-0 grid-pattern opacity-50" />
+            <div className="relative text-center">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Ready to Never Miss<br />a Customer Again?
+              </h2>
+              <p className="text-xl text-[#8b8b9e] mb-8 max-w-xl mx-auto">
+                Join 50+ Malaysian businesses already using StrykrAgent.
+              </p>
+              <a
+                href="#pricing"
+                className="inline-flex items-center gap-2 bg-[#00d4aa] text-black px-8 py-4 rounded-xl font-semibold text-lg hover:bg-[#00e4ba] transition shadow-xl shadow-[#00d4aa]/30"
+              >
+                Start Free Trial
+                <span>→</span>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-gray-100">
+      <footer className="py-12 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">⚡</span>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d4aa] to-[#00a8cc] flex items-center justify-center">
+              <span>⚡</span>
+            </div>
             <span className="font-bold">StrykrAgent</span>
           </div>
-          <div className="flex items-center gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-gray-700">Privacy</a>
-            <a href="#" className="hover:text-gray-700">Terms</a>
-            <a href="#" className="hover:text-gray-700">Contact</a>
+          <div className="flex items-center gap-6 text-sm text-[#8b8b9e]">
+            <a href="#" className="hover:text-white transition">Privacy</a>
+            <a href="#" className="hover:text-white transition">Terms</a>
+            <a href="#" className="hover:text-white transition">Contact</a>
           </div>
-          <div className="text-sm text-gray-500">
-            © 2026 StrykrAgent. Made in Malaysia 🇲🇾
+          <div className="text-sm text-[#8b8b9e]">
+            © 2026 StrykrAgent · Made with ❤️ in Malaysia 🇲🇾
           </div>
         </div>
       </footer>
